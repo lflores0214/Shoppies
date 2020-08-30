@@ -1,11 +1,13 @@
-import React from "react"
+import React from "react";
 
-const NominatedMovieCard = ({nominations}) => {
-    return (
-        <div>
+const NominatedMovieCard = ({ title, poster, year, id }) => {
+  return (
+    <div>
+      <img src={poster != "N/A" ? poster : null} alt={`poster for ${title}`} />
+      <h3>{title}</h3>
+      <p>({year})</p>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default NominatedMovieCard
+export default NominatedMovieCard;
