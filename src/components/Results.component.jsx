@@ -11,7 +11,7 @@ const Results = ({ movies, setNominations, nominations }) => {
             return (
               <MovieCard
                 id={movie.id}
-                key={movie.id + 1}
+                key={movie.id}
                 title={movie.title}
                 year={movie.year}
                 poster={movie.poster}

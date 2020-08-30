@@ -1,11 +1,11 @@
 import React from "react";
 
-const MovieCard = ({ title, year, poster, setNominations, nominations }) => {
+const MovieCard = ({ title, year, poster, setNominations, nominations, id }) => {
   const nomObj = {
     title: title,
     year: year,
     poster: poster,
-    nominated: true,
+    id: id
   };
   const nominate = (e) => {
     e.preventDefault();
