@@ -1,18 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const MovieCard = ({ title, year, poster, setNominations, nominations }) => {
-  const nomObj = {
+const MovieCard = ({
+  title,
+  year,
+  poster,
+  setNominations,
+  nominations,
+  id,
+  movies,
+  setMovies,
+  isNominated,
+}) => {
+  const movObj = {
     title: title,
     year: year,
     poster: poster,
-    nominated: true,
+    id: id,
   };
+  useEffect(() => {
+    setMovies(
+      movies.map((el) => {
+        for (let i = 0; i < nominations.length; i++) {
+          if (el.id === nominations[i].id) {
+            el = { ...el, isNominated: true };
+          }
+        }
+        return el;
+      })
+    );
+    console.log(nominations);
+  }, [nominations]);
   const nominate = (e) => {
     e.preventDefault();
     if (nominations.length < 5) {
-      setNominations([...nominations, nomObj]);
+      setNominations([...nominations, movObj]);
     } else {
-      alert("You can only nominate 5 movies")
+      alert("You can only nominate 5 movies");
     }
   };
   return (
@@ -21,7 +44,9 @@ const MovieCard = ({ title, year, poster, setNominations, nominations }) => {
       <p>
         {title} <span>({year})</span>
       </p>
-      <button onClick={nominate}>Nominate</button>
+      <button disabled={isNominated} onClick={nominate}>
+        Nominate
+      </button>
     </div>
   );
 };
