@@ -2,7 +2,8 @@ import React from "react";
 
 import MovieCard from "./MovieCard.component";
 
-const Results = ({ movies, setNominations, nominations }) => {
+const Results = ({ movies, setNominations, nominations, setMovies }) => {
+  console.log(movies);
   return (
     <>
       <div>
@@ -10,15 +11,16 @@ const Results = ({ movies, setNominations, nominations }) => {
           movies.map((movie) => {
             return (
               <MovieCard
-                id={movie.id}
                 key={movie.id}
+                id={movie.id}
                 title={movie.title}
                 year={movie.year}
                 poster={movie.poster}
-                nominated={movie.nominated}
+                isNominated={movie.isNominated}
                 nominations={nominations}
                 setNominations={setNominations}
-                
+                setMovies={setMovies}
+                movies={movies}
               />
             );
           })

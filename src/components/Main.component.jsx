@@ -13,18 +13,20 @@ const Main = () => {
     axios
       .get(`http://www.omdbapi.com/?s=${search}&type=movie&apikey=3ee71779`)
       .then((response) => {
-        response.data.Search
-          ? setMovies(
-              response.data.Search.map((movie) => {
-                return {
-                  title: movie.Title,
-                  year: movie.Year,
-                  poster: movie.Poster,
-                  id: movie.imdbID,
-                };
-              })
-            )
-          : console.log(movies);
+        if (response.data.Search) {
+          setMovies(
+            response.data.Search.map((movie) => {
+              return {
+                title: movie.Title,
+                year: movie.Year,
+                poster: movie.Poster,
+                id: movie.imdbID,
+                isNominated: false,
+              };
+            })
+          );
+          console.log(movies);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -33,11 +35,13 @@ const Main = () => {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-  console.log("nominations", nominations);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="search">Movies</label>
           <input type="text" name="search" onChange={handleChange}></input>
         </form>
@@ -46,6 +50,7 @@ const Main = () => {
         movies={movies}
         setNominations={setNominations}
         nominations={nominations}
+        setMovies={setMovies}
       />
       <Nominations nominations={nominations} setNominations={setNominations} />
     </div>
