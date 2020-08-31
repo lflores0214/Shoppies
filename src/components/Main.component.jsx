@@ -52,7 +52,12 @@ const Main = () => {
         nominations={nominations}
         setMovies={setMovies}
       />
-      <Nominations nominations={nominations} setNominations={setNominations} />
+      <Nominations 
+      nominations={nominations} 
+      setNominations={setNominations} 
+      movies={movies}
+      setMovies={setMovies}
+      />
     </div>
   );
 };

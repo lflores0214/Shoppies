@@ -7,19 +7,23 @@ const NominatedMovieCard = ({
   id,
   nominations,
   setNominations,
+  movies,
+  setMovies,
 }) => {
+  const removeNomination = (e) => {
+    e.preventDefault();
+    setNominations(nominations.filter((nom) => nom.id !== id));
+    setMovies(
+      movies.map((el) => (el.id === id ? { ...el, isNominated: false } : el))
+    );
+  };
+
   return (
     <div>
       <img src={poster !== "N/A" ? poster : null} alt={`poster for ${title}`} />
       <h3>{title}</h3>
       <p>({year})</p>
-      <button
-        onClick={() =>
-          setNominations(nominations.filter((nom) => nom.id !== id))
-        }
-      >
-        Remove
-      </button>
+      <button onClick={removeNomination}>Remove</button>
     </div>
   );
 };

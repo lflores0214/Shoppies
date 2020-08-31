@@ -1,6 +1,6 @@
 import React from "react";
 import NominatedMovieCard from "./NominatedMovieCard.Component";
-const Nominations = ({ nominations, setNominations }) => {
+const Nominations = ({ nominations, setNominations, movies, setMovies }) => {
   return (
     <div>
       {nominations.length ? (
@@ -14,6 +14,8 @@ const Nominations = ({ nominations, setNominations }) => {
               key={nom.id}
               nominations={nominations}
               setNominations={setNominations}
+              movies={movies}
+              setMovies={setMovies}
             />
           );
         })
