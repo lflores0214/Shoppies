@@ -3,7 +3,7 @@ import React from "react";
 import MovieCard from "./MovieCard.component";
 
 const Results = ({ movies, setNominations, nominations, setMovies }) => {
-  console.log(movies);
+  
   return (
     <>
       <div>
