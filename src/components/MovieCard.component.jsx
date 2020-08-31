@@ -20,17 +20,15 @@ const MovieCard = ({
   useEffect(() => {
     setMovies(
       movies.map((el) => {
-        for (let i in nominations) {
+        for (let i = 0; i < nominations.length; i++) {
           if (el.id === nominations[i].id) {
-            return { ...el, isNominated: true };
-          } else {
-            return el;
+            el = { ...el, isNominated: true };
           }
         }
         return el;
       })
     );
-    console.log(nominations)
+    console.log(nominations);
   }, [nominations]);
   const nominate = (e) => {
     e.preventDefault();
