@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+
+
 const MovieCard = ({
   title,
   year,
