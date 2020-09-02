@@ -2,11 +2,17 @@ import React from "react";
 
 import MovieCard from "./MovieCard.component";
 
-const Results = ({ movies, setNominations, nominations, setMovies }) => {
-  
+const Results = ({
+  movies,
+  setNominations,
+  nominations,
+  setMovies,
+  search,
+}) => {
   return (
     <>
       <div>
+  {movies.length ? (<h3>Results for "{`${search}`}"</h3>): null}
         {movies.length ? (
           movies.map((movie) => {
             return (
@@ -26,7 +32,7 @@ const Results = ({ movies, setNominations, nominations, setMovies }) => {
           })
         ) : (
           <div>
-            <h1>Search for movies to nominate</h1>
+            <h3>Search for movies to nominate</h3>
           </div>
         )}
       </div>
