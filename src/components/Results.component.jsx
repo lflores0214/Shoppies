@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ResNomContainer } from './styles/ResNom.styles';
+
 import MovieCard from "./MovieCard.component";
 
 const Results = ({
@@ -11,7 +13,7 @@ const Results = ({
 }) => {
   return (
     <>
-      <div>
+      <ResNomContainer>
   {movies.length ? (<h3>Results for "{`${search}`}"</h3>): null}
         {movies.length ? (
           movies.map((movie) => {
@@ -35,7 +37,7 @@ const Results = ({
             <h3>Search for movies to nominate</h3>
           </div>
         )}
-      </div>
+      </ResNomContainer>
     </>
   );
 };

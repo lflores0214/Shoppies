@@ -7,6 +7,7 @@ import {
   SearchContainer,
   ResNomContainer,
   Input,
+  Label
 } from "./styles/Main.styles";
 
 import Results from "./Results.component";
@@ -52,15 +53,13 @@ const Main = () => {
   return (
     <MainContainer>
       <SearchContainer>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="search">Movie Title</label>
-          <Input
-            placeholder="Search by movie title"
-            type="text"
-            name="search"
-            onChange={handleChange}
-          ></Input>
-        </form>
+        <Label htmlFor="search">Movie Title</Label>
+        <Input
+          placeholder="Search by movie title"
+          type="text"
+          name="search"
+          onChange={handleChange}
+        ></Input>
       </SearchContainer>
       <ResNomContainer>
         <Results

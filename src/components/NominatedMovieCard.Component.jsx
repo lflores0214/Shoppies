@@ -1,5 +1,7 @@
 import React from "react";
 
+import { MovieCardContainer, Img, Button } from "./styles/MovieCard.styles";
+
 const NominatedMovieCard = ({
   title,
   year,
@@ -19,12 +21,13 @@ const NominatedMovieCard = ({
   };
 
   return (
-    <div>
-      <img src={poster !== "N/A" ? poster : null} alt={`poster for ${title}`} />
-      <h3>{title}</h3>
-      <p>({year})</p>
-      <button onClick={removeNomination}>Remove</button>
-    </div>
+    <MovieCardContainer>
+      <Img src={poster !== "N/A" ? poster : null} alt={`poster for ${title}`} />
+      <h3>
+        {title} <span>({year})</span>
+      </h3>
+      <Button background="red" onClick={removeNomination}>Remove</Button>
+    </MovieCardContainer>
   );
 };
 
