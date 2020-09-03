@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-
+import { MovieCardContainer, Img, Button } from "./styles/MovieCard.styles"
 
 const MovieCard = ({
   title,
@@ -41,15 +41,17 @@ const MovieCard = ({
     }
   };
   return (
-    <div>
-      <img src={poster} alt={`movie poster for ${title}`} />
-      <p>
+    <>
+    <MovieCardContainer>
+      <Img src={poster} alt={`movie poster for ${title}`} />
+      <h3>
         {title} <span>({year})</span>
-      </p>
-      <button disabled={isNominated} onClick={nominate}>
+      </h3>
+      <Button background="green" disabled={isNominated} onClick={nominate}>
         Nominate
-      </button>
-    </div>
+      </Button>
+    </MovieCardContainer>
+    </>
   );
 };
 
