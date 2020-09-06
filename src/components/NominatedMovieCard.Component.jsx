@@ -15,6 +15,9 @@ const NominatedMovieCard = ({
   const removeNomination = (e) => {
     e.preventDefault();
     setNominations(nominations.filter((nom) => nom.id !== id));
+    let noms = JSON.parse(localStorage.getItem("nominations"));
+    noms = noms.filter((nom) => nom.id !== id);
+    localStorage.setItem("nominations", JSON.stringify(noms));
     setMovies(
       movies.map((el) => (el.id === id ? { ...el, isNominated: false } : el))
     );
@@ -26,7 +29,9 @@ const NominatedMovieCard = ({
       <h3>
         {title} <span>({year})</span>
       </h3>
-      <Button background="red" onClick={removeNomination}>Remove</Button>
+      <Button background="red" onClick={removeNomination}>
+        Remove
+      </Button>
     </MovieCardContainer>
   );
 };

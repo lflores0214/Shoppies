@@ -7,7 +7,7 @@ import {
   SearchContainer,
   ResNomContainer,
   Input,
-  Label
+  Label,
 } from "./styles/Main.styles";
 
 import Results from "./Results.component";
@@ -16,7 +16,11 @@ import Nominations from "./Nominations.component";
 const Main = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
-  const [nominations, setNominations] = useState([]);
+  const [nominations, setNominations] = useState(
+    localStorage.getItem("nominations")
+      ? JSON.parse(localStorage.getItem("nominations"))
+      : []
+  );
 
   useEffect(() => {
     axios
@@ -40,15 +44,12 @@ const Main = () => {
       .catch((error) => {
         console.log(error);
       });
-    if (search.length == 0) {
+    if (search.length === 0) {
       setMovies([]);
     }
   }, [search]);
   const handleChange = (e) => {
     setSearch(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
   };
   return (
     <MainContainer>
