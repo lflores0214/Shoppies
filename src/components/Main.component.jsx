@@ -38,7 +38,6 @@ const Main = () => {
               };
             })
           );
-          console.log(movies);
         }
       })
       .catch((error) => {
