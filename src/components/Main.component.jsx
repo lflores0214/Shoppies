@@ -24,7 +24,7 @@ const Main = () => {
 
   useEffect(() => {
     axios
-      .get(`http://www.omdbapi.com/?s=${search}&type=movie&apikey=3ee71779`)
+      .get(`https://www.omdbapi.com/?s=${search}&type=movie&apikey=3ee71779`)
       .then((response) => {
         if (response.data.Search) {
           setMovies(
