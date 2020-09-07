@@ -30,13 +30,15 @@ const MovieCard = ({
         return el;
       })
     );
-    console.log(nominations);
   }, [nominations]);
   const nominate = (e) => {
     e.preventDefault();
     if (nominations.length < 5) {
       setNominations([...nominations, movObj]);
-      localStorage.setItem("nominations", JSON.stringify([...nominations, movObj]));
+      localStorage.setItem(
+        "nominations",
+        JSON.stringify([...nominations, movObj])
+      );
     } else {
       alert("You can only nominate 5 movies");
     }
